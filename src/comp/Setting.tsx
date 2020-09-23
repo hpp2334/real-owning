@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
 
 const FILE_WORK: Array<FileWorkType> = [
   'SZUOJ-Log',
-  'Customize',
+  /** @todo support customize filework */
+  // 'Customize',
 ];
 
 const CHECK_SCHEMA: Array<CheckSchemaType> = [
