@@ -18,13 +18,12 @@
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.2.0",
     "react-highlight": "^0.12.0",
+    "react-scripts": "^3.4.3",
     "react-virtualized": "^9.22.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "webpack",
+    "deploy": "npm run build && gh-pages -d dist -b gh-pages"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,6 +47,7 @@
     "@types/react-window": "^1.8.2",
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^4.3.0",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.5.0",
     "source-map-loader": "^1.1.0",
     "style-loader": "^1.2.1",

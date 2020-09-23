@@ -12,7 +12,7 @@
 
 ## Requirements
 
-请尽量使用最新版的 Firefox 或者 Chrome，**不支持 IE**
+请尽量使用最新版的 Firefox 或者 Chrome，**不支持 IE**。
 
 浏览器需要支持部分近几年的特性：
 
