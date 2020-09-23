@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "deploy": "npm run build && gh-pages -d dist -b gh-pages"
+    "deploy": "npm run build && cp -r static dist && gh-pages -d dist -b gh-pages"
   },
   "eslintConfig": {
     "extends": "react-app"
