@@ -285,7 +285,6 @@ function PageMain() {
   const [savSetting] = useStore<SettingType>('setting', {
     fileWork: 'SZUOJ-Log',
     checkSchema: 'Simple(C++)',
-    rate: 0.9,
   }, true);
   const [analysisResult, setAnalysisResult] = useState<WorkOnCbsResult>(emptyObject);
   const [curStage, setCurStage] = useState<StageType>('wait-for-file-selection');

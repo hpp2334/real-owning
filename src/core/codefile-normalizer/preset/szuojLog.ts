@@ -1,8 +1,7 @@
-import { decode } from '../../../util/transformCoding';
 import { TemplateFunc, CodeBlock } from '../template';
 
-const f: TemplateFunc = async (_file) => {
-  const file = decode(_file, 'gbk');
+const f: TemplateFunc = async (_file, utils) => {
+  const file = utils.transformEncoding.decode(_file, 'gbk');
   const chunks = file.split('------------------------------------------------------');
   const res = chunks.filter(x => !/^\s*$/.test(x)).map<CodeBlock>(chunk => {
     chunk = chunk.replace(/\r\n/g, '\n').trim();

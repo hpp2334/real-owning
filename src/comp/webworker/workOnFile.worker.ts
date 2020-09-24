@@ -2,6 +2,8 @@ import { codeAnalyzer, codeNormalizer } from '../../core';
 import { TemplateFuncResult } from '../../core/codefile-normalizer/template';
 import { SettingType } from '../../type/setting';
 import { WorkOnCbsResult, WorkOnCbsResultPerProblem } from '../../type/workOnCbs';
+import JSZip from 'jszip';
+import * as transformEncoding from '../../util/transformCoding';
 
 const ctx = self as any;
 
@@ -14,8 +16,12 @@ const notify = (evName: string, err: string | null, data: any) => {
 };
 
 const preWorkOnFileContent = async (setting: SettingType, content: ArrayBuffer): Promise<TemplateFuncResult> => {
+  const utils = { transformEncoding, zip: new JSZip() };
   if (setting.fileWork === 'SZUOJ-Log') {
-    return await codeNormalizer.preset.szuojLog(content);
+    return await codeNormalizer.preset.szuojLog(content, utils);
+  }
+  if (setting.fileWork === 'vjudge.net') {
+    return await codeNormalizer.preset.vjudgeNet(content, utils);
   }
   if (setting.fileWork === 'Customize') {
     try {
@@ -47,7 +53,7 @@ const workOnCodeBlocks = async (setting: SettingType, cbs: TemplateFuncResult): 
     for (let i = 0; i < filteredCbs.length; i++) {
       for (let j = 0; j < i; j++) {
         if (filteredCbs[i].author !== filteredCbs[j].author) {
-          const r: number = await worker(filteredCbs[i].code, filteredCbs[j].code, setting.rate);
+          const r: number = await worker(filteredCbs[i].code, filteredCbs[j].code);
           resultInThisProblem.push({
             a: filteredCbs[i],
             b: filteredCbs[j],
