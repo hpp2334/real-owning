@@ -18,6 +18,7 @@ export default function SimpleSnackbar() {
     }
 
     setOpen(false);
+    setMessage({ message: '' });
   };
 
   return (
