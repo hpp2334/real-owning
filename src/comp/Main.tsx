@@ -11,6 +11,7 @@ import { PairAnalysisResult, WorkOnCbsResult } from '../type/workOnCbs';
 import WorkOnFileWorker from './webworker/workOnFile.worker';
 import { useDropzone } from 'react-dropzone';
 import { List, AutoSizer, WindowScroller } from 'react-virtualized';
+import { Message } from '../type/snackbar';
 
 
 const emptyObject = {};
@@ -289,7 +290,12 @@ function PageMain() {
   const [analysisResult, setAnalysisResult] = useState<WorkOnCbsResult>(emptyObject);
   const [curStage, setCurStage] = useState<StageType>('wait-for-file-selection');
   const [processRate, setProcessRate] = useState<number>(0);
-  const handleReset = () => setCurStage('wait-for-file-selection');
+  const [message, emitMessage] = useStore<Message>('global-message', { message: '' });
+  const handleReset = () => {
+    setCurStage('wait-for-file-selection');
+    setFile(undefined);
+    setProcessRate(0);
+  }
   const classes = useStyles();
 
   // Deal with file
@@ -314,7 +320,9 @@ function PageMain() {
           if (evName === 'done') {
             setAnalysisResult(data);
           } else if (evName === 'error') {
-            console.error(err);
+            emitMessage({ message: err });
+            handleReset();
+            return;
           }
 
           setCurStage('done');

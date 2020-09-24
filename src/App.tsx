@@ -7,6 +7,7 @@ import { purple } from '@material-ui/core/colors';
 import green from '@material-ui/core/colors/green';
 import { useStore } from './core/state-manager';
 import { PageType } from './type/type';
+import SimpleSnackbar from './comp/SnackBar';
 
 const theme = createMuiTheme({
   palette: {
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+        <SimpleSnackbar />
         <Header />
         <Container maxWidth="lg" style={{ marginTop: '100px' }}>
           {curPage === 'setting' && <Setting onSaveSetting={() => setCurPage('main')} />}

@@ -48,19 +48,6 @@ module.exports = {
   optimization: {
     splitChunks: {
       chunks: 'all',
-      name: true,
-      automaticNameDelimiter: '-',
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
     }
   },
 
