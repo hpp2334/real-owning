@@ -6,9 +6,19 @@
 
 ## Usage
 
-### SZUOJ
+### Setting
+
+首先需要在 Setting 中选择 FileWork
+
+### FileWork
+
+#### SZUOJ
 
 在 SZUOJ 后台拿到 log 文件后，作为文件处理即可。
+
+#### vjudge.net
+
+在 Contest 中导出 Submissions，把得到的 zip 文件作为文件处理即可。
 
 ## Requirements
 
