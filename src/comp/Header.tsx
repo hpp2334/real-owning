@@ -1,5 +1,4 @@
-import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton/IconButton';
+import { AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
 import SettingsIcon from '@material-ui/icons/Settings';
 import React from 'react';
 import { useStore } from '../core/state-manager';

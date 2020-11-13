@@ -11,7 +11,7 @@ module.exports = {
   mode: 'production',
 
   // Enable sourcemaps for debugging webpack's output.
-  devtool: "source-map",
+  devtool: "none",
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
@@ -57,5 +57,15 @@ module.exports = {
       template: path.resolve( __dirname, 'public/index.html' ),
       filename: 'index.html'
    })
-  ]
+  ],
+  
+  externals: {
+    "react": "React",
+    "react-dom": "ReactDOM",
+    "@material-ui/core": "MaterialUI",
+    "@material-ui/core/SvgIcon": ["MaterialUI", "SvgIcon"],
+    "react-virtualized": "ReactVirtualized",
+    "prop-types": "PropTypes",
+    "react-dropzone": "reactDropzone",
+  }
 };

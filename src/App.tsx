@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { Container, createMuiTheme, ThemeProvider, Typography } from '@material-ui/core';
+import React from 'react';
+import { Container, createMuiTheme, ThemeProvider, colors } from '@material-ui/core';
 import Header from './comp/Header';
 import Setting from './comp/Setting';
 import Main from './comp/Main';
-import { purple } from '@material-ui/core/colors';
-import green from '@material-ui/core/colors/green';
 import { useStore } from './core/state-manager';
 import { PageType } from './type/type';
 import SimpleSnackbar from './comp/SnackBar';
+const { green } = colors;
 
 const theme = createMuiTheme({
   palette: {

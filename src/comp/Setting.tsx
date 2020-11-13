@@ -1,6 +1,4 @@
-import { Button, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, TextField } from '@material-ui/core';
-import Input from '@material-ui/core/Input/Input';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import { Button, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, makeStyles } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useStore } from '../core/state-manager';
 import { SettingType, StringnifySettingType, FileWorkType, CheckSchemaType } from '../type/setting';
@@ -36,7 +34,7 @@ const CHECK_SCHEMA: Array<CheckSchemaType> = [
 
 function Setting(props: SettingProps) {
   const classes = useStyles();
-  const [error, setError] = useState<number>(0);
+  const [error] = useState<number>(0);
   const [savSetting, setSavSetting] = useStore<SettingType>('setting', {
     fileWork: 'SZUOJ-Log',
     checkSchema: 'Simple(C++)',

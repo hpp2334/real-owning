@@ -1,25 +1,22 @@
-import { Box, Button, Divider, Fade, FormControlLabel, Paper, Radio, RadioGroup, Typography } from '@material-ui/core';
-import Chip from '@material-ui/core/Chip/Chip';
-import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
-import { grey } from '@material-ui/core/colors';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Box, Button, Divider, Fade, FormControlLabel, Radio, RadioGroup,
+  Typography, Chip, CircularProgress, colors, makeStyles } from '@material-ui/core';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { CodeBlock } from '../core/codefile-normalizer/template';
 import { useStore } from '../core/state-manager';
 import { SettingType } from '../type/setting';
-import { PairAnalysisResult, WorkOnCbsResult } from '../type/workOnCbs';
+import { WorkOnCbsResult } from '../type/workOnCbs';
 import WorkOnFileWorker from './webworker/workOnFile.worker';
 import { useDropzone } from 'react-dropzone';
 import { List, AutoSizer, WindowScroller } from 'react-virtualized';
 import { Message } from '../type/snackbar';
-
+const { grey } = colors;
 
 const emptyObject = {};
 type StageType = 'wait-for-file-selection' | 'working' | 'done';
 
 const worker = new WorkOnFileWorker();
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   mainPage: {
   },
   greyPaper: {
@@ -109,8 +106,7 @@ interface ToolBarProps {
 
 function ToolBar(props: ToolBarProps) {
   const classes = useStyles();
-  const ref = useRef<HTMLInputElement>(null);
-  const { onClickReset, curStage } = props;
+  const { onClickReset } = props;
 
   return (
     <div style={{ display: 'flex' }}>
@@ -149,7 +145,6 @@ function PageDetail(props: PageDetailProps) {
     return Object.keys(analysisResult);
   }, [analysisResult]);
   const [curSelectId, setCurSelectId] = useState<string>('');
-  const ref = useRef<HTMLElement>(null);
   
 
   useEffect(() => {
@@ -290,7 +285,7 @@ function PageMain() {
   const [analysisResult, setAnalysisResult] = useState<WorkOnCbsResult>(emptyObject);
   const [curStage, setCurStage] = useState<StageType>('wait-for-file-selection');
   const [processRate, setProcessRate] = useState<number>(0);
-  const [message, emitMessage] = useStore<Message>('global-message', { message: '' });
+  const [, emitMessage] = useStore<Message>('global-message', { message: '' });
   const handleReset = () => {
     setCurStage('wait-for-file-selection');
     setFile(undefined);
